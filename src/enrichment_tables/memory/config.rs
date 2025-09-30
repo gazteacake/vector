@@ -32,12 +32,12 @@ pub struct MemoryConfig {
     /// TTL is reset when the key is replaced.
     #[serde(default = "default_ttl")]
     pub ttl: u64,
-    /// The scan interval used to look for expired records. This is provided
+    /// The scan interval (in seconds) used to look for expired records. This is provided
     /// as an optimization to ensure that TTL is updated, but without doing
     /// too many cache scans.
     #[serde(default = "default_scan_interval")]
     pub scan_interval: NonZeroU64,
-    /// The interval used for making writes visible in the table.
+    /// The interval (in seconds) used for making writes visible in the table.
     /// Longer intervals might get better performance,
     /// but there is a longer delay before the data is visible in the table.
     /// Since every TTL scan makes its changes visible, only use this value
